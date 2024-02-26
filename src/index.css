@@ -1,0 +1,17 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(220, 8%, 8%);
+  }
+
+  .dark {
+    --background: hsl(220, 8%, 8%);
+    --foreground: hsl(0, 0%, 100%);
+  }
+}
