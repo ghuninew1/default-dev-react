@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useWindowScroll } from './useWindowScroll'
 import { useIdle } from './useHooks'
 
@@ -9,15 +9,18 @@ function App() {
 
   const idle = useIdle(10000)
 
-  if (idle && y.y !== 0) {
-    scrollTo({ top: 0, behavior: 'smooth' })
-    console.log('idle');
-  }
+  
+  useEffect(() => {
+    if (idle && y.y !== 0) {
+      scrollTo({ top: 0, behavior: 'instant' })
+      console.log('idle');
+    }
+  }, [idle, scrollTo, y.y])
 
 
   return (
     <div className='h-[1000vh]'>
-    <div className='fixed top-2 right-2 transform-gpu'>
+    <div className='fixed right-2 top-2 transform-gpu'>
     {y.y}
       <div className='flex min-h-screen w-full items-center justify-center'>
         <button className={`rounded-md bg-slate-200 p-3 text-3xl`} onClick={() => setCount((count) => count + 1)}>
